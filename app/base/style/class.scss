@@ -1,0 +1,130 @@
+.pointer {
+  cursor: pointer;
+}
+
+.hide {
+  display: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.fbs-left {
+  float: left;
+}
+
+.fbs-right {
+  display: block;
+  overflow: hidden;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.consolas {
+  font-family: 'consolas', Helvetica, Arial, sans-serif !important;
+}
+
+.clearfix::before,
+.clearfix::after {
+  line-height: 0;
+
+  display: block;
+  visibility: hidden;
+  clear: both;
+
+  height: 0;
+
+  content: '';
+}
+
+.ellipsis {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis_2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsis_3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+
+.css-decoration {
+  width: 100%;
+  height: 0.2rem;
+}
+
+.css-decoration_x2 {
+  width: 100%;
+  height: 0.4rem;
+}
+
+// ===== scroll bar ======
+
+/*滚动条样式*/
+.small-scroll::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 12px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 12px;
+}
+
+.small-scroll::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 1;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.small-scroll::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 0;
+  background: #c1c1c1;
+}
+
+
+// ============== 版心 ================
+.module-core {
+  position: relative;
+  width: 985px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+// ============= 二维码 ============
+.qrcode {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  .qrcode-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3D(-50%, -50%, 0);
+    width: 23%;
+    height: 23%;
+    background: url('../../static/img/qrcode_icon.png') no-repeat;
+    background-size: 100% 100%;
+  }
+}

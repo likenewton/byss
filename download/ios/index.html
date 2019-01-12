@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>游戏下载</title>
+    <style>body{margin:0;padding:0}.ios{max-width:750px;margin:0 auto;position:relative;padding-bottom:65px}.ios>img{display:block;width:100%}.dl_btn{position:fixed;bottom:0;width:100%;left:0;height:65px;line-height:65px;background:#e6953d;color:#fff;text-align:center;text-decoration:none;font-size:28px;box-shadow:0 -5px 10px rgba(0,0,0,.2)}</style>
+</head>
+<body>
+<div id="ios" class="ios">
+    <img src="/img/ios/pic_1.jpg">
+    <img src="/img/ios/pic_2.jpg">
+    <img src="/img/ios/pic_3.jpg">
+    <img src="/img/ios/pic_4.jpg">
+    <a class="dl_btn" href="#">点击下载</a>
+</div>
+<script>!function(){var e=function(e){var n=new RegExp("(\\?|&)"+e+"=([^(\\?|&|#)]*)(\\?|#|&|$)"),t=window.location.href.match(n);return null!=t?t[2]:null}("plist");if(e){var n=document.getElementsByClassName("dl_btn")[0],t="itms-services:///?action=download-manifest&url="+decodeURIComponent(e);n.href=t}else alert("参数错误")}()</script>
+
+</body>
+</html>

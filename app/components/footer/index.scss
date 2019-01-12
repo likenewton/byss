@@ -1,0 +1,124 @@
+.js-Footer {
+
+  .open_varchar {
+
+    a {
+      cursor: pointer;
+      color: #1e3a7f;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .type1 {
+    padding: 30px 0;
+    position: relative;
+
+    * {
+      font-size: 14px;
+    }
+
+    p {
+      height: 21px;
+      line-height: 21px;
+    }
+
+    .ivs {
+      display: inline-block;
+      width: 15px;
+      height: 18px;
+      background: url('../../static/img/ivs.png') no-repeat;
+      background-size: 100% 100%;
+      vertical-align: text-top;
+    }
+
+    span {
+      display: inline-block;
+      padding: 0 5px;
+
+
+      a {
+        font-size: 14px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .type2 {
+    padding: 30px 0;
+    margin: 0 auto;
+
+    * {
+      font-size: 12px;
+    }
+
+    .left {
+      float: left;
+      width: 375px;
+      height: 100%;
+
+      ul {
+        width: 100%;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+
+        li {
+          text-align: center;
+          height: 100%;
+          cursor: pointer;
+
+          &:hover {
+            .text {
+              color: #05a8eb;
+            }
+          }
+
+          .icon {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-bottom: 5px;
+          }
+
+          &:nth-child(1) {
+            .icon {
+              background-image: url('../../static/img/footer_icon_01.png');
+            }
+          }
+
+          &:nth-child(2) {
+            .icon {
+              background-image: url('../../static/img/footer_icon_02.png');
+            }
+          }
+
+          &:nth-child(3) {
+            .icon {
+              background-image: url('../../static/img/footer_icon_03.png');
+            }
+          }
+
+          .text {
+            display: block;
+            color: #fff;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    .right {
+      float: right;
+      width: 400px;
+    }
+
+  }
+
+}
