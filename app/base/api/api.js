@@ -45,6 +45,16 @@ const STATIC = {
   },
   titleList: {
     NEWS: [{
+      ID: '_8',
+      type: 'NEWS',
+      text: '新春狂欢，鱼你有约',
+      date: '2019-01-24'
+    }, {
+      ID: '_7',
+      type: 'NEWS',
+      text: '如何兑红包，我知道，你需要',
+      date: '2019-01-23'
+    }, {
       ID: '_5',
       type: 'NEWS',
       text: '新年新气象，捕鱼来更新啦！',
@@ -225,6 +235,7 @@ const server53 = function() {
   _53code.src = STATIC._53CodeSrc;
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(_53code, s);
+
 }
 
 module.exports = {
