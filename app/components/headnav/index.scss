@@ -1,166 +1,104 @@
 @import '../../base/style/border.scss';
 
-$blue:#52b1f5;
+.header-inner {
+  width: 100%;
+  height: 100%;
+  background: url('../../static/img/header_bg.png') no-repeat;
+  background-size: 100% 100%;
+  z-index: 199;
 
-.js-Headnav {
-    position: fixed;
-    top: 0;
-    z-index: 199;
-    width: 100%;
-    .meun {
-      display: none;
-    }
-     .headnav-inner {
-        height: 70px;
-        background: $blue; 
-        * {
-          color: #fff;
-        }
-        .headernav-core {
-          position: relative; 
-          width: 1176px;
-          margin: 0 auto;
-          height: 70px;
-        }
-        .nav-list {
-            display: inline-block;
-            height: 100%;
-            margin-left: 58%;
-            li {
-              display: inline-block;
-              padding: 4px 12px;
-              margin: 0 30px;
-              vertical-align: top;
-              height: 100%;
-              border-bottom: 4px solid #52b1f5;
-              a {
-                display: block;
-                height: 100%;
-                line-height: 66px;
-                display: flex;
-                align-items: center;
-              }
-              &.active {
-                border-bottom: 4px solid #fff;
-              }
-            }
-        }
-     }
-    
-    .sub-display {
-       position: absolute;
-       display: none;
-       height: 60px;
-       width: 100%;
-       background: green;
-       z-index: 99;
-       .subnav-list {
-            display: inline-block;
-            line-height: 60px;
-            li {
-                display: inline-block;
-                margin-right: 10px;
-            }
-        }
-    }
+  .logo {
+    position: absolute;
+    height: 1.0rem;
+    left: 0.3rem;
+    top: 0.12rem;
 
-    .logo-wrapper {
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 168px;
-      height: 54px;
-      background: url('../../static/img/wanci/web_logo_1.png') no-repeat;
-      background-size: 100%;
-    }
-}
-
-@media screen and (min-width:1024px) and (max-width:1280px) {
-    /* CSS 代码 */
-  .js-Headnav {
-    .headnav-inner {
-      .headernav-core {
-        width: 950px;
-      }
-    }
   }
-}
 
-
-@media screen and (max-width:1023px) {
-  .js-Headnav {
-    position: relative;
-    top: 0;
-    z-index: 29;
+  h1 {
+    position: absolute;
     width: 100%;
-    .meun {
-      display: inline-block;
-      position: absolute;
+    left: 1.46rem;
+    top: 0.27rem;
+
+    p {
       color: #fff;
-      top: 17px;
-      right: 30px;
-      font-size: 26px;
+      font-size: 0.4rem;
+      height: 0.5rem;
+      line-height: 0.5rem;
+      font-weight: bold;
     }
-    .headnav-inner {
-      height: 60px;
-      .logo-wrapper {
-        left: 20px;
-        width: 124px;
-        height: 40px;
-        top: 11px;
+
+    span {
+      position: absolute;
+      font-size: 0.2rem;
+      top: 0.50rem;
+      left: 0;
+    }
+  }
+
+  .js-Download {
+    position: absolute;
+    top: 0.27rem;
+    right: 1.04rem;
+    width: 2.56rem;
+    height: 0.9rem;
+    background: url('../../static/img/download.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .menu {
+    padding: 0.2rem;
+    box-sizing: content-box;
+    position: absolute;
+    top: 0.22rem;
+    right: -0.04rem;
+    width: 0.78rem;
+    height: 0.45rem;
+    background: url('../../static/img/menue-small-2.png') no-repeat;
+    background-origin: content-box;
+    background-size: 100% 100%;
+
+    &.show-menu {
+      right: 0.14rem;
+      width: 0.423rem;
+      height: 0.45rem;
+      background: url('../../static/img/menu-close.png') no-repeat;
+      background-origin: content-box;
+      background-size: 100% 100%;
+    }
+
+  }
+
+  .nav-list {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    left: 0;
+    top: 1.24rem;
+    width: 100%;
+    padding: 0 0.3rem;
+
+    li {
+      height: 1.2rem;
+      line-height: 1.2rem;
+
+      >div {}
+
+      p {
+        display: inline-block;
+        font-size: 0.32rem
       }
-      .headernav-core {
-        position: relative; 
-        width: 100%;
-        margin: 0 auto;
-        height: 60px;
-      }
-      .nav-list {
-        position: absolute;
-        z-index: 29;
-        top: 60px;
-        width: 100%;
-        height: auto;
-        margin-left: 0;
-        display: none;
-        box-shadow:0 2px 5px #333;
-        li {
-          position: relative;
-          display: block;
-          padding: 0;
-          height: 50px;
-          background: rgba(82, 177, 245, 0.8);
-          margin: 0;
-          border: none !important;
-          a {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            width: 100%;
-            height: 100%;
-            padding: 0 20px;
-            line-height: 56px;
-            display: flex;
-            align-items: center;
-          }
-          &:hover {
-            a {
-              color: #fff;
-              font-weight: bold;
-              text-decoration: underline;
-            }
-          }
-          &.active {
-            a {
-              color: #fff;
-              text-decoration: underline;
-              font-weight: bold;
-            }
-          }
-        }
+
+      span {
+        font-family: 'Arial';
+        font-size: 0.28rem;
       }
     }
   }
-}
 
+  * {
+    color: #fff;
+    font-family: tahoma, "Microsoft YaHei", sans-serif
+  }
+}

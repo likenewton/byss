@@ -5,7 +5,7 @@ import Api from '../../base/api/api.js'
 import tpl from './pageTpl/article.tpl'
 import './style.scss'
 
-if (Api.Tool.browser().versions.mobile) location.replace('m/agreement.html')
+if (Api.Tool.browser().versions.mobile) location.replace('agreement_m.html')
 
 // ==== INIT ====
 class Init {

@@ -2,7 +2,8 @@
 // import Ajax from './ajax';
 import Download from './download';
 import Footer from './footer';
-// import Headnav from './headnav';
+import Footer_m from './footer_m';
+import Headnav from './headnav';
 
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   //Ajax, 
   Download, // 下载模块
   Footer, // 页脚
-  //Headnav, // 页头导航栏
+  Footer_m, // 页脚
+  Headnav, // 页头导航栏
 }

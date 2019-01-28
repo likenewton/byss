@@ -9,7 +9,7 @@ import crumbsTpl from './pageTpl/crumbs.tpl';
 import titleTpl from './pageTpl/article_title.tpl';
 import navTpl from './pageTpl/navigation.tpl';
 
-if (Api.Tool.browser().versions.mobile) location.replace('news_m.html#__NEWS')
+if (!Api.Tool.browser().versions.mobile) location.replace(`news.html#__NEWS`)
 
 // ==== INIT ====
 class Init {
@@ -37,39 +37,27 @@ class Init {
     this._renderPage();
   }
 
-  initEvent() {
+  initEvent(CONFIG) {
     let self = this;
 
     $(window).on('resize', function() {
       Api.Tool.setQrcode($('.qrcode'));
-    }).trigger('resize')
-
-    // router
-    $('.to-home').click(() => location.href = 'index.html')
-    $('.to-news').click(() => location.href = 'news.html#__NEWS')
-    $('.to-activities').click(() => location.href = 'news.html#__ACTIVITIES')
-    $('.to-walkthrough').click(() => location.href = 'news.html#__WALKTHROUGH')
-    // download
-    $('.android').click(() => window.open(Api.STATIC.downloadLinks.byss[0]))
-    $('.ios').click(() => window.open(Api.STATIC.downloadLinks.byss[1]))
-    // mask
-    $('.weixin-wrapper').click(() => $('.gzwx-mask-wrapper').addClass('show'))
-    $('.gzwx-mask-wrapper .close').click(() => $('.gzwx-mask-wrapper').removeClass('show'))
+    })
 
     // 打开新闻页
-    $('.articles-wrapper').on('click', '.js-article', ((e) => {
+    $('.articles-wrapper-m').on('click', '.js-article', ((e) => {
       let $target = $(e.target)
-      location.href = `news.html#__${$target.attr('data-type')}?id=${$target.attr('data-id')}`
+      location.href = `./news_m.html#__${$target.attr('data-type')}?id=${$target.attr('data-id')}`
     }))
 
     // navigation
     $('.navigation').on('click', '.left-btn', (e) => {
       if (self.data.curPage === 1) return
-      location.href = `news.html#__${self.data.route}?page=${--self.data.curPage}`
+      location.href = `./news_m.html#__${self.data.route}?page=${--self.data.curPage}`
     })
     $('.navigation').on('click', '.right-btn', (e) => {
       if (self.data.curPage === self.data.totalPage) return
-      location.href = `news.html#__${self.data.route}?page=${++self.data.curPage}`
+      location.href = `./news_m.html#__${self.data.route}?page=${++self.data.curPage}`
     })
 
   }
@@ -77,8 +65,7 @@ class Init {
   // 该页面内部的渲染
   _renderPage() {
 
-    Api.server53()
-
+    this.fn.scrollTop()
     this.fn.getRoute()
     this.fn.renderHeaderNav()
     this.fn.renderCrumbs()
@@ -88,7 +75,10 @@ class Init {
     this.fn.renderNavigation()
 
     Api.Route.listenerRouteChange((e) => {
+      $('header .nav-list').hide()
+      $('.menu').removeClass('show-menu')
       // 路由改变时的回调函数
+      this.fn.scrollTop()
       this.fn.getRoute()
       this.fn.renderHeaderNav()
       this.fn.renderCrumbs()
@@ -98,25 +88,44 @@ class Init {
       this.fn.renderNavigation()
     });
 
-    // 游戏下载
-    Components.Download.render({
-      link: Api.STATIC.downloadLinks.byss,
-      closeBtn: true,
-      cb: () => $('.download-mask-wrapper').removeClass('show')
-    });
-
-    // 页脚
-    Components.Footer.render({
-      type: 2,
-      cbFnList: [{
-        cb: () => $('.download-mask-wrapper').addClass('show')
+    // 页头
+    Components.Headnav.render({
+      list: [{
+        text: ['首页', 'HOME'],
+        cb() {
+          location.href = './index_m.html'
+        }
       }, {
-        cb: () => $('.gzwx-mask-wrapper').addClass('show')
+        text: ['新闻公告', 'NEWS'],
+        cb() {
+          location.href = './news_m.html#__NEWS'
+        }
       }, {
-        cb: () => $('#KFLOGO .Lelem')[0].onclick()
+        text: ['精彩活动', 'ACTIVITIES'],
+        cb() {
+          location.href = './news_m.html#__ACTIVITIES'
+        }
+      }, {
+        text: ['游戏攻略', 'WALKTHROUGH'],
+        cb() {
+          location.href = './news_m.html#__WALKTHROUGH'
+        }
+      }, {
+        text: ['微信公众号', 'WECHAT'],
+        cb() {
+          $('html, body').animate({ scrollTop: $('.weixin-qrcode').offset().top }, 500)
+        }
       }]
     });
 
+    // 页脚
+    Components.Footer_m.render({
+      type: 2,
+      cbFnList: []
+    });
+
+    Api.Tool.setQrcode($('.qrcode'))
+    Api.server53()
     this.initEvent()
 
   }
@@ -145,16 +154,13 @@ class Init {
         }
       },
       renderCrumbs() {
-        let id = Api.Tool.getQuery('id')
         $('.crumbs-nav').html(template.compile(crumbsTpl)({
           data: this._this.data,
-          obj: Api.STATIC.titleList[this._this.data.route].filter((v) => v.ID == id)[0],
-          id,
         }))
       },
       renderArticleTitle() {
         if (Api.Tool.getQuery('id')) return
-        $('.articles-wrapper .module-core').html(template.compile(titleTpl)({
+        $('.articles-wrapper-m .module-core_m').html(template.compile(titleTpl)({
           data: this._this.data,
           titleList: Api.STATIC.titleList
         }))
@@ -162,7 +168,7 @@ class Init {
       renderArticleContent() {
         if (!Api.Tool.getQuery('id')) return
         let tpl = Api.STATIC.articleList[this._this.data.route][Api.Tool.getQuery('id')]
-        $('.articles-wrapper .module-core').html(template.compile(tpl)({
+        $('.articles-wrapper-m .module-core_m').html(template.compile(tpl)({
           isWanci: Api.STATIC.isWanci
         }))
       },
@@ -182,7 +188,10 @@ class Init {
         }))
       },
       calcArticleHeight() {
-        $('.articles-wrapper').css('minHeight', $(window).height() - $('.js-Footer').outerHeight() - 389)
+        $('.articles-wrapper-m').css('minHeight', $(window).height() - $('.js-Footer').outerHeight() - 389)
+      },
+      scrollTop() {
+        $('body, html').animate({ scrollTop: 0 }, 500)
       }
     }
   }

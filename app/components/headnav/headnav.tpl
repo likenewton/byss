@@ -1,17 +1,19 @@
-<div class="headnav-inner">
-    <div class="headernav-core">
-        <div class="logo-wrapper pointer"></div>
-        <ul class="nav-list">
-            {{each data.list as item index}}
-            <li class="nav-item nav-item-{{index}} {{if item.active}}active{{/if}} pointer">
-                <a href="{{item.href || 'javascript:'}}" data-index="{{index}}" data-sub="{{item.subNav ? 'true' : 'false'}}">{{item.text}}</a>
-            </li>
-            {{/each}}
-        </ul>
-        <span class="meun iconfont icon-menu pointer"></span>
-    </div>
+<div class="header-inner">
+  <img class="logo" src="images/qrcode_icon.png">
+  <h1>
+    <p>捕鱼圣手</p>
+    <span>满屏爆金根本停不下来!!</span>
+  </h1>
+  <a class="js-Download" href="{{data.link}}" target="_blank"></a>
+  <span class="iconfont menu"></span>
+  <ul class="nav-list">
+    {{each data.list as item index}}
+    <li class="nav-item">
+      <div class="to-news">
+        <p>{{item.text[0]}}</p>
+        <span>{{item.text[1]}}</span>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
 </div>
-<div class="sub-display">
-    <!-- template-inject -->
-</div> 
-

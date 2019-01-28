@@ -73,17 +73,10 @@ export default class Popup {
             data.body = template.compile(data.body)({
                 data: data.tplData,
             })
-
-            console.log(data.body);
         }
 
-        this.$box = $(template.compile(tpl)({
-            data
-        }));
-        if (this.$box) {
-            this.$box.remove();
-        }
-
+        this.$box = $(template.compile(tpl)({data}))
+        if (this.$box) this.$box.remove()
         if ($(data.version_dom).length == 0) {
             let oDiv = document.createElement('div');
             $(oDiv).addClass(data.dom.substr(1)).addClass(data.version_dom.substr(1));

@@ -8,7 +8,7 @@ import './style.scss';
 // ==== tpl ====
 import artTpl from './pageTpl/article_title.tpl';
 
-if (Api.Tool.browser().versions.mobile) location.replace('m/index.html')
+if (Api.Tool.browser().versions.mobile) location.replace('index_m.html')
 
 // ==== INIT ====
 class Init {
@@ -106,6 +106,7 @@ class Init {
     // 页脚
     Components.Footer.render();
 
+    $('.wxzx-content .left').width(Math.round($('.wxzx-content .left').width()))
     this.data.swiper1 = new Swiper('.js-Swiper_01', {
       loop: true,
       autoplay: 5000,
